@@ -1,0 +1,87 @@
+/* ===== Обёртка поля: резервируем место под ошибку ===== */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.25rem; /* отступ между полями, не ломает ваш layout */
+}
+
+/* Подсказка о формате — вне поля ввода */
+.form-field .hint {
+    color: #667384;            /* как ваш placeholder */
+    font-size: 0.85rem;
+    line-height: 1.35;
+    min-height: 1.2em;         /* резерв под подсказку */
+    margin-top: 6px;
+}
+
+/* Сообщение об ошибке — место зарезервировано, макет не «прыгает» */
+.form-field .error-message {
+    color: #dc2626;            /* ваш цвет из .required::after */
+    font-size: 0.85rem;
+    line-height: 1.35;
+    min-height: 1.2em;         /* резерв под сообщение */
+    display: block;
+    margin-top: 2px;
+}
+
+/* Сброс браузерной обводки — используем свою */
+.form-field input,
+.form-field textarea {
+    /* базовые стили (border, padding, radius) уже в style.css */
+    box-sizing: border-box;
+}
+
+/* Валидное поле — зелёная рамка в тон вашей палитры */
+.form-field.is-valid input,
+.form-field.is-valid textarea {
+    border-color: #16a34a;
+    background-color: #f0fdf4;
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.12);
+}
+
+/* Невалидное поле — красная рамка */
+.form-field.is-invalid input,
+.form-field.is-invalid textarea {
+    border-color: #dc2626;
+    background-color: #fef2f2;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12);
+}
+
+/* Кнопка: состояние disabled — использует вашу базу */
+button[type="submit"]:disabled {
+    background: #94a3b8;              /* серый, но в вашей холодной палитре */
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;                  /* отключаем hover-подъём */
+    opacity: 0.9;
+}
+
+button[type="submit"]:disabled:hover {
+    background: #94a3b8;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Статус формы под кнопкой */
+.form-status {
+    min-height: 1.4em;
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    color: #16a34a;
+}
+
+.form-status.is-error {
+    color: #dc2626;
+}
+
+/* Адаптивность: на мобильных кнопка на всю ширину */
+@media (max-width: 640px) {
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+        font-size: 16px; /* чтобы iOS не зумил */
+    }
+    button[type="submit"] {
+        width: 100%;
+    }
+}

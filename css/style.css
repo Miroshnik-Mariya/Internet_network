@@ -1,0 +1,212 @@
+    header{
+        background-color: #1a90d8;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 1.5rem; 
+    }
+
+    header a{
+        color: white;
+    }
+
+    footer{
+        background-color: black;
+        color: white;
+        padding: 30px;
+        margin-top: 20px;
+    }
+
+    footer a{
+        color: white;
+    }
+
+
+    /*Карточка с книгой*/
+    .card__title,
+    .card__author {
+        display: block;      /* каждая ссылка — на своей строке */
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .card__cover {
+        width: 100%;
+        aspect-ratio: 2 / 3;  /* Пропорция обложки*/
+        object-fit: cover;    /* обрезает лишнее, не искажая */
+        display: block;
+        border-radius: 18px; 
+    }
+
+
+
+
+    /* каталог карточек с книгами */
+    .list-card {
+        display: grid;
+        /* Карточки сами распределятся: минимум 260px, максимум - сколько дадут */
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1rem;
+    }
+
+    .card { 
+        margin-bottom: 0; 
+    }
+
+
+    /* База: мобильный (столбец) */
+    header nav ul {
+        display: flex;
+        flex-direction: column; /* Ставим пункты друг под другом */
+        gap: 0.8rem;
+        list-style: none;
+        margin: 0 0 1.5rem 0; /* Отступ снизу, чтобы меню не слипалось */
+        padding: 0;
+        transition: all 0.2s ease; 
+    }
+
+    /*при наведении*/
+    header nav ul li:hover {
+        background-color: #2d5a8c; 
+        color: #ffffff;            
+        border-color: #2d5a8c;
+        border-radius: 8px;
+        cursor: pointer;           
+    }
+
+    /* Убираем space-between на мобильном, иначе они разлетятся */
+    header nav ul li a {
+        display: block;
+        padding: 0.8rem;
+        text-decoration: none;
+        text-align: center;
+        border: 2px solid #c9e8fb; 
+        border-radius: 8px;
+    }
+
+    /* Планшеты и ПК: строка */
+    @media (min-width: 768px) {
+        header nav ul {
+            flex-direction: row; 
+            justify-content: center; 
+            flex-wrap: wrap; /* Если не влезут — перенесутся */
+            background: none;
+        }
+        
+        header nav ul li a {
+            background: none; /* Убираем фон, делаем просто ссылками */
+            padding: 0.5rem 0.75rem;
+            border: none; /* Убираем рамки на ПК */
+        }
+    }
+
+
+    /* Стили для подписей (label) */
+    label {
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        margin-top: 1.5rem;
+        color: #1e3a5f; 
+        display: block;
+    }
+
+    /* Звездочка для обязательных полей  */
+    label.required::after {
+        content: " *";
+        color: #dc2626; 
+    }
+
+    /* 2. Общие стили для полей */
+    input[type="text"],
+    input[type="number"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    input[type="bio"],
+    input[type="password"],
+    input[type="search"],
+    select,
+    textarea {
+        width: 100%; 
+        padding: 0.75rem 1rem; 
+        border: 2px solid #e2e8f0; 
+        border-radius: 10px; 
+        font-family: inherit;
+        font-size: 1rem;
+        color: #1f2937;
+        background-color: #f8fafc; 
+        box-sizing: border-box;
+        transition: all 0.3s ease; 
+    }
+
+    /* при наведении*/
+    input:hover,
+    select:hover,
+    textarea:hover {
+        border-color: #cbd5e1; 
+        background-color: #ffffff;
+    }
+
+    /* при клике */
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none; /* Убираем стандартную браузерную обводку */
+        border-color: #2d5a8c; 
+        background-color: #ffffff; 
+        box-shadow: 0 0 0 4px rgba(45, 90, 140, 0.15); 
+    }
+
+    /* подсказка */
+    ::placeholder {
+        color: #667384;
+        opacity: 1; /* защита от Firefox */
+    }
+
+    /* Поля с ошибкой */
+    input:invalid:not(:placeholder-shown) {
+        border-color: #ef4444;
+    }
+
+    /* выпадающий список */
+    select {
+        background-position: right 1rem center;
+        background-size: 1rem;
+        padding-right: 2rem; 
+        cursor: pointer;
+    }
+
+
+    textarea {
+        resize: vertical; 
+        min-height: 100px; 
+        line-height: 1.5; /*Межстрочный интервал*/
+    }
+
+    /* кнопка отправки */
+    button[type="submit"] {
+        margin-top: 2rem;
+        padding: 1rem 1.5rem;
+        background: #2d5a8c;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 6px rgba(45, 90, 140, 0.2); 
+        transition: all 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+        background: linear-gradient(135deg, #1e3a5f, #152a45);
+        box-shadow: 0 6px 12px rgba(45, 90, 140, 0.3);
+        transform: translateY(-2px); /* Кнопка чуть приподнимается */
+    }
+
+    button[type="submit"]:active {
+        transform: translateY(0); /* Возвращается на место при клике */
+        box-shadow: 0 2px 4px rgba(45, 90, 140, 0.2);
+    }

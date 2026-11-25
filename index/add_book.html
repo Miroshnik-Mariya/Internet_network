@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление книги</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/add_book.css">
+    <link rel="stylesheet" href="../css/validation.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог книг</a></li>
+            <li><a href="about_us.html">О нас</a></li>
+            <li><a href="#">Добавить книгу</a></li>
+            <li><a href="add_author.html">Добавить автора</a></li>
+            <li><a href="personal_account.html">Личный кабинет</a></li>
+        </ul>
+    </nav>
+    <nav>
+        <ul>
+            <li><a href="selected_books.html">Избранные книги</a></li>
+            <li><a href="read_books.html">Прочитанные книги</a></li>
+            <li><a href="my_books.html">Мои книги</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+        <h1>Добавление новой книги</h1>
+        <p>Заполните сведения о книге, чтобы она появилась в онлайн-каталоге</p>
+
+        <div class="form-preview">
+            <form action="#" method="post" id="add-book-form" novalidate>
+                <h3>Обязательная информация</h3>
+
+                <!-- 1. Название книги -->
+                <div class="form-field">
+                    <label for="title" class="required">Название книги</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Например: «Мастер и Маргарита»"
+                        required
+                        minlength="2"
+                        maxlength="200"
+                        autocomplete="off"
+                    >
+                    <small class="hint">От 2 до 200 символов, без кавычек в начале и конце.</small>
+                    <span class="error-message" id="title-error" aria-live="polite"></span>
+                </div>
+
+                <!-- 2. Автор -->
+                <div class="form-field">
+                    <label for="author" class="required">Автор(ы)</label>
+                    <input
+                        type="text"
+                        id="author"
+                        name="author"
+                        placeholder="Михаил Булгаков"
+                        required
+                        minlength="3"
+                        maxlength="150"
+                        pattern="[А-Яа-яЁёA-Za-z\s.\-]+"
+                        title="Только буквы, пробелы, дефисы и точки"
+                        autocomplete="off"
+                    >
+                    <small class="hint">Только буквы, пробелы, дефисы и точки. Не менее 3 символов. Несколько авторов — через запятую.</small>
+                    <span class="error-message" id="author-error" aria-live="polite"></span>
+                </div>
+
+                <!-- 3. ISBN -->
+                <div class="form-field">
+                    <label for="isbn" class="required">ISBN</label>
+                    <input
+                        type="text"
+                        id="isbn"
+                        name="isbn"
+                        placeholder="978-5-04-123456-7"
+                        required
+                        pattern="97[89]-\d-\d{2}-\d{6}-\d"
+                        title="Формат: 978-5-04-123456-7"
+                        autocomplete="off"
+                    >
+                    <small class="hint">Формат: <code>978-5-04-123456-7</code> (13 цифр с дефисами).</small>
+                    <span class="error-message" id="isbn-error" aria-live="polite"></span>
+                </div>
+
+                <!-- 4. Год издания -->
+                <div class="form-field">
+                    <label for="year" class="required">Год издания</label>
+                    <input
+                        type="number"
+                        id="year"
+                        name="year"
+                        placeholder="2025"
+                        required
+                        min="1000"
+                        max="2026"
+                        step="1"
+                    >
+                    <small class="hint">Целое число от 1000 до 2026.</small>
+                    <span class="error-message" id="year-error" aria-live="polite"></span>
+                </div>
+
+                <!-- 5. Цена -->
+                <div class="form-field">
+                    <label for="price" class="required">Цена, ₽</label>
+                    <input
+                        type="number"
+                        id="price"
+                        name="price"
+                        placeholder="499"
+                        required
+                        min="1"
+                        max="100000"
+                        step="0.01"
+                    >
+                    <small class="hint">Цена от 1 до 100 000 ₽ (можно копейки).</small>
+                    <span class="error-message" id="price-error" aria-live="polite"></span>
+                </div>
+
+                <!-- 6. Аннотация -->
+                <div class="form-field">
+                    <label for="annotation" class="required">Аннотация</label>
+                    <textarea
+                        id="annotation"
+                        name="annotation"
+                        rows="4"
+                        placeholder="Краткое описание книги (2–4 предложения)..."
+                        required
+                        minlength="20"
+                        maxlength="2000"
+                    ></textarea>
+                    <small class="hint">От 20 до 2000 символов. Кратко о содержании книги.</small>
+                    <span class="error-message" id="annotation-error" aria-live="polite"></span>
+                </div>
+
+                <!-- 7. Дата поступления -->
+                <div class="form-field">
+                    <label for="arrival" class="required">Дата поступления в каталог</label>
+                    <input
+                        type="date"
+                        id="arrival"
+                        name="arrival"
+                        required
+                    >
+                    <small class="hint">Не позднее сегодняшнего дня.</small>
+                    <span class="error-message" id="arrival-error" aria-live="polite"></span>
+                </div>
+
+                <button type="submit" id="submit-btn" disabled>Добавить книгу в каталог</button>
+                <p class="form-status" id="form-status" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <a href="tel:+79033027545">+7 (903) 302-75-45</a>
+    <p>Каталог книг - онлайн-каталог литературы</p>
+    <a href="about_us.html">О нас</a>
+    <p>© 2026 Онлайн-каталог книг. Все добавленные материалы проходят модерацию.</p>
+</footer>
+
+<script src="../js/add_book_validation.js"></script>
+</body>
+</html>

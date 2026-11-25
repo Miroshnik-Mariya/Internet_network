@@ -1,0 +1,28 @@
+.carousel {
+  overflow: hidden;        /* скрыть слайды за пределами */
+  width: 100%;
+}
+
+.carousel_track {
+  display: flex;
+ 
+  animation: scroll 30s infinite;  /* автопрокрутка */
+}
+
+.carousel_slide {
+  flex: 0 0 100%;       
+  width: 100%;
+}
+
+.carousel_slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes scroll {
+  0%,   20%  { transform: translateX(0); }
+  33%,  53%  { transform: translateX(-100%); }
+  66%,  86%  { transform: translateX(-200%); }
+  100%       { transform: translateX(0); }
+}

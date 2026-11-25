@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог книг</title>
+    <link rel="stylesheet" href="../css/catalog.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/add_author.css">
+    <nav>
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="#">Каталог книг</a></li>
+            <li><a href="about_us.html">О нас</a></li>
+            <li><a href="add_book.html">Добавить книгу</a></li>
+            <li><a href="add_author.html">Добавить автора</a></li>
+            <li><a href="personal_account.html">Личный кабинет</a></li>
+        </ul>
+    </nav>
+
+    <nav>
+        <ul>
+            <li><a href="selected_books.html">Избранные книги</a></li>
+            <li><a href="read_books.html">Прочитанные книги</a></li>
+            <li><a href="my_books.html">Мои книги</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<main>
+    <h1>Каталог книг</h1>
+    <p>Подберите книгу, которая заинтересует именно Вас!</p>
+
+    
+
+      <!-- ФИЛЬТРЫ -->
+      <aside class="filters">
+        <form class="filters__form" id="filters-form">
+
+          <!-- Жанр -->
+          <fieldset class="filters__group">
+            <legend>Жанр</legend>
+            <label><input type="checkbox" name="genre" value="classic"> Классика</label>
+            <label><input type="checkbox" name="genre" value="fantasy"> Фантастика</label>
+            <label><input type="checkbox" name="genre" value="detective"> Детектив</label>
+            <label><input type="checkbox" name="genre" value="romance"> Роман</label>
+          </fieldset>
+
+            <!-- Автор -->
+            <fieldset class="filters__group">
+                <legend>Автор</legend>
+                <input
+                    type="search"
+                    name="author"
+                    class="filters__input"
+                    placeholder="Введите имя автора"
+                    autocomplete="off"
+                >
+            </fieldset>
+
+
+          <!-- Цена -->
+          <fieldset class="filters__group">
+            <legend>Цена, ₽</legend>
+            <div class="filters__range">
+              <input type="number" name="price-min" placeholder="от" min="0">
+              <input type="number" name="price-max" placeholder="до" min="0">
+            </div>
+          </fieldset>
+
+          <button type="submit" class="filters_find">Найти</button>
+          <button type="reset" class="filters_reset">Сбросить</button>
+        
+
+    
+    
+    
+        <!-- СОРТИРОВКА -->
+        <div class="catalog__toolbar">
+          <p class="catalog__count">Найдено: <span id="count">0</span></p>
+
+          <label class="catalog__sort">
+            Сортировать:
+            <select id="sort" name="sort">
+              <option value="popular">По популярности</option>
+              <option value="price-asc">Цена: по возрастанию</option>
+              <option value="price-desc">Цена: по убыванию</option>
+              <option value="title">По названию (А–Я)</option>
+              <option value="year">По году (новые)</option>
+            </select>
+          </label>
+        </div>
+      </form>
+      </aside>
+
+      
+      <!-- ПУСТО, ЕСЛИ НИЧЕГО НЕ НАЙДЕНО -->
+      <p class="catalog__empty" id="empty" hidden>Ничего не найдено. Попробуйте изменить фильтры.</p>
+    
+
+
+
+    <h2>Под Ваш запрос идеально подойдут</h2>
+    <div class="list-card">
+            <div class="card">
+               <a class="card__title" href="../index/book/book.html">Шестерка воронов</a>
+               <a class="card__author" href="../index/author.html">Ли Бардуго</a>
+               <img class="card__cover" src="../img/book1_example.jpg" alt="Шестерка воронов">
+               
+            </div>
+
+            <div class="card">
+               <a class="card__title" href="../index/book/book_bulgakov.html">Мастер и Маргарита</a>
+               <a class="card__author" href="../index/author.html">Михаил Булгаков</a>
+               <img class="card__cover" src="../img/book2_example.jpg" alt="Мастер и Маргарита">
+                
+            </div>
+
+            <div class="card">
+               <a class="card__title" href="../index/book/book_dostoevski.html">Преступление и наказание</a>
+               <a class="card__author" href="../index/author.html">Фёдор Достоевский</a>
+               <img class="card__cover" src="../img/book4_example.jpg" alt="Преступление и наказание">
+                
+            </div>
+
+            <div class="card">
+               <a class="card__title" href="../index/book/book_oryel.html">1984</a>
+               <a class="card__author" href="../index/author.html">Джордж Оруэл</a>
+               <img class="card__cover" src="../img/book3_example.jpg" alt="1984">
+            </div>
+    </div>
+
+    <p><strong>Обратите внимание</strong></p>
+    <p>Нам кажется, Вам понравится</p>
+    <div class="list-card">
+            <div class="card">
+               <a class="card__title" href="../index/book/book.html">Дьявол в отражении</a>
+               <a class="card__author" href="../index/author.html">Мария Мирошник</a>
+               <img class="card__cover" src="../img/my_book1.jpg" alt="Дьявол в отражении">
+               
+            </div>
+
+            <div class="card">
+               <a class="card__title" href="../index/book/book.html">Тайна дворянского рода</a>
+               <a class="card__author" href="../index/author.html">Мария Мирошник</a>
+               <img class="card__cover" src="../img/my_book2.jpg" alt="Тайна дворянского рода">
+                
+            </div>
+    </div>
+
+   
+
+    
+</main>
+
+
+
+<footer>
+    <a href="tel:+79033027545">+7 (903) 302-75-45</a>
+    <p>Каталог книг - онлайн-каталог литературы</p>
+    <a href="about_us.html">О нас</a>
+</footer>

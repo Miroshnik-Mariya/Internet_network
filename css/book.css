@@ -1,0 +1,94 @@
+img {
+  height: auto;      
+  display: block;    
+  border-radius: 12px;
+}
+
+/* Мобильная версия */
+.book {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px;              
+  width: 90%;
+  max-width: 1000px;      /* Ограничиваем ширину для ПК */
+  margin: 20px auto;      /* Центрируем на странице */
+}
+
+.book_image {
+  width: 100%;
+}
+
+.book_image img {
+  width: 90%;            
+  max-width: 300px;       
+  height: auto;
+  margin: 0 auto;        
+  border-radius: 8px;     
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+}
+
+.book_text {
+  width: 100%;
+}
+
+
+
+
+/* СПИСКИ КНИГ*/
+.book_text ul {
+    padding-left: 20px;
+    margin: 10px 0 20px 0;
+}
+
+
+
+
+/* ЖАНРЫ */
+.genres ul {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px;       
+    list-style: none; 
+    padding: 0;
+    margin: 15px 0;  
+}
+
+.genres ul li {
+    padding: 6px 16px;        
+    background-color: #f0f4f8; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 50px;      
+    font-weight: 500;          
+    transition: all 0.2s ease; 
+}
+
+.genres ul li:hover {
+    background-color: #2d5a8c; 
+    color: #ffffff;            
+    border-color: #2d5a8c;
+    cursor: pointer;
+}
+
+
+
+@media (min-width: 768px) {
+    .book {
+        flex-direction: row;    
+        align-items: flex-start;
+        gap: 2rem;              
+    }
+
+    .book_image {
+        flex: 0 0 20rem;       
+    }
+
+    .book_image img {
+        width: 100%;
+        max-width: 100%;        
+        margin: 0;             
+    }
+
+    .book_text {
+        flex: 1;                /* Текст занимает оставшееся место */
+    }
+}
