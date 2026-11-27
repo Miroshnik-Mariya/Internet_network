@@ -1,63 +1,79 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-
-<header>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Об авторе</title>
-    <link rel="stylesheet" href="../css/author.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/author.css">
+</head>
 
-    <nav>
-        <ul>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="catalog.html">Каталог книг</a></li>
-            <li><a href="about_us.html">О нас</a></li>
-            <li><a href="add_book.html">Добавить книгу</a></li>
-            <li><a href="add_author.html">Добавить автора</a></li>
-            <li><a href="personal_account.html">Личный кабинет</a></li>
-        </ul>
-    </nav>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог книг</a></li>
+                <li><a href="about_us.html">О нас</a></li>
+                <li><a href="add_book.html">Добавить книгу</a></li>
+                <li><a href="add_author.html">Добавить автора</a></li>
+                <li><a href="personal_account.html">Личный кабинет</a></li>
+            </ul>
+        </nav>
 
-    <nav>
-        <ul>
-            <li><a href="selected_books.html">Избранные книги</a></li>
-            <li><a href="read_books.html">Прочитанные книги</a></li>
-            <li><a href="my_books.html">Мои книги</a></li>
-        </ul>
-    </nav>
-</header>
+        <nav>
+            <ul>
+                <li><a href="selected_books.html">Избранные книги</a></li>
+                <li><a href="read_books.html">Прочитанные книги</a></li>
+                <li><a href="my_books.html">Мои книги</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        <section class="book">
+            <div class="book_image">
+                <img class="author-photo"
+                     src="../img/lee_bardugo.jpg"
+                     alt="Фотография Ли Бардуго">
+            </div>
 
-
-
-<main>
-    <section class="book">
-        <div class="book_image">
-            <img src="../img/lee_bardugo.jpg" alt="Фотография Ли Бардуго">
-        </div>
-         
-        <div class="book_info">
+            <div class="book_info">
                 <div class="book_text">
                     <h1>Ли Бардуго</h1>
-                    <p>Ли Бардуго (Leigh Bardugo) — американская писательница, автор фэнтези-бестселлеров, в том числе цикла «Гриши» и других произведений. Её книги переведены на 38 языков и изданы в более чем 50 странах.</p>
-                    <p>Родилась 6 апреля 1975 года в Иерусалиме, но вскоре переехала с семьёй в США, где выросла в Лос-Анджелесе. В 1997 году получила диплом Йельского университета по специальности «Английский язык».</p>
-                    
+
+                    <!-- Абзац после ФИО: обрезается, если больше 200 символов -->
+                    <div class="collapsible" data-collapsible data-limit="200">
+                        <div class="collapsible__content">
+                            <p>Ли Бардуго (Leigh Bardugo) — американская писательница, автор фэнтези-бестселлеров, в том числе цикла «Гриши» и других произведений. Её книги переведены на 38 языков и изданы в более чем 50 странах. Родилась 6 апреля 1975 года в Иерусалиме, но вскоре переехала с семьёй в США, где выросла в Лос-Анджелесе. В 1997 году получила диплом Йельского университета по специальности «Английский язык». Ли родилась 6 апреля 1975 года в Иерусалиме, но ее детство прошло в Соединенных Штатах Америки, куда впоследствии переехала семья.
+
+После школы Бардуго стала студенткой Йельского университета и в качестве основной специальности выбрала изучение английского языка.
+
+В 1997-м девушка получила диплом бакалавра старейшего учебного заведения Америки и на протяжении пары лет трудилась в сфере копирайтинга и журналистики, а затем круто изменила профессиональную биографию и отучилась на специалиста по гриму и макияжу.</p>
+                        </div>
+                        <button type="button" class="collapsible__toggle" hidden>Показать полностью</button>
+                    </div>
+
                     <h2>Библиография</h2>
                     <p>У автора издано: 10 книг.</p>
-                    
+
                     <h3>ГришиВерс</h3>
-                    <ul>
-                        <li>«Тень и кость»</li>
-                        <li>«Штурм и буря»</li>
-                        <li>«Крах и восход»</li>
-                        <li>«Шестёрка воронов»</li>
-                        <li>«Продажное королевство»</li>
-                        <li>«Король шрамов»</li>
-                        <li>«Правление волков»</li>
-                        <li>«Девятый дом»</li>
-                    </ul>
+                    <!-- Список: обрезается, если пунктов больше 3 -->
+                    <div class="collapsible" data-collapsible data-limit="3" data-type="items">
+                        <div class="collapsible__content">
+                            <ul>
+                                <li>«Тень и кость»</li>
+                                <li>«Штурм и буря»</li>
+                                <li>«Крах и восход»</li>
+                                <li>«Шестёрка воронов»</li>
+                                <li>«Продажное королевство»</li>
+                                <li>«Король шрамов»</li>
+                                <li>«Правление волков»</li>
+                                <li>«Девятый дом»</li>
+                            </ul>
+                        </div>
+                        <button type="button" class="collapsible__toggle" hidden>Показать полностью</button>
+                    </div>
 
                     <h3>Цикл про Алекс Стерн</h3>
                     <ul>
@@ -66,7 +82,15 @@
                     </ul>
 
                     <h2>Личная жизнь</h2>
-                    <p>В 2022 году она тайно вышла замуж за партнёра, с которым до этого прожила около четырёх лет. При этом писательница просит не раскрывать имя супруга в публикациях — для неё это личная, закрытая от прессы сфера. Пара познакомилась в Сан-Диего.</p>
+
+                    <!-- Личная жизнь: обрезается, если больше 200 символов -->
+                    <div class="collapsible" data-collapsible data-limit="200">
+                        <div class="collapsible__content">
+                            <p>В 2022 году она тайно вышла замуж за партнёра, с которым до этого прожила около четырёх лет. При этом писательница просит не раскрывать имя супруга в публикациях — для неё это личная, закрытая от прессы сфера. Пара познакомилась в Сан-Диего. Здоровье. Ли Бардуго страдает от остеонекроза — заболевания костей. Из-за этого она иногда пользуется тростью. 
+</p>
+                        </div>
+                        <button type="button" class="collapsible__toggle" hidden>Показать полностью</button>
+                    </div>
                 </div>
 
                 <div class="genres">
@@ -79,14 +103,16 @@
                         <li>серия книг</li>
                     </ul>
                 </div>
-        </div>
-    </section>
-</main>
+            </div>
+        </section>
+    </main>
 
+    <footer>
+        <a href="tel:+79033027545">+7 (903) 302-75-45</a>
+        <p>Каталог книг - онлайн-каталог литературы</p>
+        <a href="about_us.html">О нас</a>
+    </footer>
 
-<footer>
-    <a href="tel:+79033027545">+7 (903) 302-75-45</a>
-    <p>Каталог книг - онлайн-каталог литературы</p>
-    <a href="about_us.html">О нас</a>
-</footer>
+    <script src="../js/collapsible.js"></script>
+</body>
 </html>

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-
-<header>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Добавление автора</title>
-    <link rel="stylesheet" href="../css/add_author.css">
+    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/style.css">
-
+    <link rel="stylesheet" href="../css/add_author.css">
+    <link rel="stylesheet" href="../css/validation.css">
+</head>
+<body>
+<header>
     <nav>
         <ul>
             <li><a href="../index.html">Главная</a></li>
@@ -29,15 +31,10 @@
     </nav>
 </header>
 
-
-
 <main>
     <div class="container">
         <h1>Добавление нового автора</h1>
         <p>Заполните сведения об авторе, чтобы его книги было проще найти в онлайн-каталоге</p>
-
-
-
 
         <h2>Зачем добавлять авторов в каталог?</h2>
         <p>
@@ -54,9 +51,6 @@
             занимает 3–5 минут, а польза для всего сообщества читателей неоценима.
         </p>
 
-
-
-
         <h2>Что понадобится для добавления?</h2>
         <p>
             Прежде чем приступить к форме, подготовьте основные сведения об авторе. Это поможет избежать
@@ -70,10 +64,6 @@
             <li><strong>Биография</strong> — краткий очерк (3–5 предложений).</li>
             <li><strong>Фотография</strong> — портрет автора в формате JPG или PNG (по желанию).</li>
         </ul>
-
-
-
-
 
         <h2>Про фотографию автора</h2>
         <p>Подойдёт портрет в формате JPG или PNG. Это необязательно.</p>
@@ -92,9 +82,6 @@
             с портретом открывают заметно чаще.
         </p>
 
-
-
-
         <h2>Форма добавления автора</h2>
         <p>
             Ниже представлена интерактивная форма. Все поля, отмеченные звёздочкой (*), обязательны
@@ -102,58 +89,173 @@
         </p>
 
         <div class="form-preview">
-            <form action="#" method="post">
+            <form action="#" method="post" id="add-author-form" novalidate>
                 <h3>Обязательная информация</h3>
-                <label for="fullname">Имя автора *</label>
-                <input type="text" id="fullname" name="fullname" placeholder="Например: Михаил Булгаков" required>
 
-                <label for="country">Страна *</label>
-                <input type="text" id="country" name="country" placeholder="Россия" required>
+                <div class="form-field">
+                    <label for="fullname" class="required">Имя автора</label>
+                    <input
+                        type="text"
+                        id="fullname"
+                        name="fullname"
+                        placeholder="Например: Михаил Булгаков"
+                        required
+                        minlength="3"
+                        maxlength="150"
+                        pattern="[А-Яа-яЁёA-Za-z\s.\-]+"
+                        title="Только буквы, пробелы, дефисы и точки"
+                        autocomplete="off"
+                    >
+                    <small class="hint">Формат: «Фамилия Имя Отчество». Только буквы, пробелы, дефисы и точки. Не менее 3 символов.</small>
+                    <span class="error-message" id="fullname-error" aria-live="polite"></span>
+                </div>
 
+                <div class="form-field">
+                    <label for="country" class="required">Страна</label>
+                    <input
+                        type="text"
+                        id="country"
+                        name="country"
+                        placeholder="Россия"
+                        required
+                        minlength="2"
+                        maxlength="60"
+                        pattern="[А-Яа-яЁёA-Za-z\s\-]+"
+                        title="Только буквы, пробелы и дефисы"
+                        autocomplete="off"
+                    >
+                    <small class="hint">Только буквы, пробелы и дефисы. Например: Россия, США, Великобритания.</small>
+                    <span class="error-message" id="country-error" aria-live="polite"></span>
+                </div>
 
                 <h3>Дополнительная информация</h3>
-                <label for="penname">Псевдоним</label>
-                <input type="text" id="penname" name="penname" placeholder="Если публикуется под другим именем">
 
-                <label for="birthyear">Год рождения</label>
-                <input type="number" id="birthyear" name="birthyear" min="1000" max="2026" placeholder="1891">
+                <div class="form-field">
+                    <label for="penname">Псевдоним</label>
+                    <input
+                        type="text"
+                        id="penname"
+                        name="penname"
+                        placeholder="Если публикуется под другим именем"
+                        minlength="2"
+                        maxlength="100"
+                        pattern="[А-Яа-яЁёA-Za-z\s.\-]+"
+                        title="Только буквы, пробелы, дефисы и точки"
+                        autocomplete="off"
+                    >
+                    <small class="hint">Необязательно. Если заполняете — только буквы, пробелы, дефисы и точки, не менее 2 символов.</small>
+                    <span class="error-message" id="penname-error" aria-live="polite"></span>
+                </div>
 
-                <label for="deathyear">Год смерти</label>
-                <input type="number" id="deathyear" name="deathyear" min="1000" max="2026" placeholder="Оставьте пустым, если автор жив">
+                <div class="form-field">
+                    <label for="birthyear" class="required">Год рождения</label>
+                    <input
+                        type="number"
+                        id="birthyear"
+                        name="birthyear"
+                        placeholder="1891"
+                        required
+                        min="1000"
+                        max="2026"
+                        step="1"
+                    >
+                    <small class="hint">Целое число от 1000 до 2026.</small>
+                    <span class="error-message" id="birthyear-error" aria-live="polite"></span>
+                </div>
 
-                <label for="genre">Основной жанр</label>
-                <select id="genre" name="genre">
-                    <option value="">— выберите —</option>
-                    <option value="fiction">Художественная литература</option>
-                    <option value="science">Научная литература</option>
-                    <option value="history">История</option>
-                    <option value="children">Детская литература</option>
-                </select>
+                <div class="form-field">
+                    <label for="deathyear">Год смерти</label>
+                    <input
+                        type="number"
+                        id="deathyear"
+                        name="deathyear"
+                        placeholder="Оставьте пустым, если автор жив"
+                        min="1000"
+                        max="2026"
+                        step="1"
+                    >
+                    <small class="hint">Необязательно. Если заполняете — целое число от 1000 до 2026 и не раньше года рождения.</small>
+                    <span class="error-message" id="deathyear-error" aria-live="polite"></span>
+                </div>
 
-                <label for="biography">Биография</label>
-                <textarea id="biography" name="biography" rows="3" placeholder="Краткий очерк об авторе..."></textarea>
+                <div class="form-field">
+                    <label for="genre" class="required">Основной жанр</label>
+                    <select id="genre" name="genre" required>
+                        <option value="">— выберите —</option>
+                        <option value="fiction">Художественная литература</option>
+                        <option value="science">Научная литература</option>
+                        <option value="history">История</option>
+                        <option value="children">Детская литература</option>
+                    </select>
+                    <small class="hint">Выберите один из предложенных жанров.</small>
+                    <span class="error-message" id="genre-error" aria-live="polite"></span>
+                </div>
 
-                <label for="photo">Фотография (URL или загрузка)</label>
-                <input type="text" id="photo" name="photo" placeholder="https://example.com/author.jpg">
+                <div class="form-field">
+                    <label for="biography" class="required">Биография</label>
+                    <textarea
+                        id="biography"
+                        name="biography"
+                        rows="4"
+                        placeholder="Краткий очерк об авторе..."
+                        required
+                        minlength="30"
+                        maxlength="2000"
+                    ></textarea>
+                    <small class="hint">От 30 до 2000 символов. Краткий очерк (3–5 предложений).</small>
+                    <span class="error-message" id="biography-error" aria-live="polite"></span>
+                </div>
 
-                <button type="submit">Добавить автора в каталог</button>
+                <div class="form-field">
+                    <label for="photo">Фотография (URL)</label>
+                    <input
+                        type="url"
+                        id="photo"
+                        name="photo"
+                        placeholder="https://example.com/author.jpg"
+                        pattern="https?://.+\.(jpg|jpeg|png|webp)"
+                        title="Ссылка на изображение JPG, PNG или WebP"
+                        autocomplete="off"
+                    >
+                    <small class="hint">Необязательно. Ссылка на изображение JPG, PNG или WebP. Например: https://example.com/author.jpg</small>
+                    <span class="error-message" id="photo-error" aria-live="polite"></span>
+                </div>
+
+                <button type="submit" id="submit-btn" disabled>Добавить автора в каталог</button>
+                <p class="form-status" id="form-status" aria-live="polite"></p>
             </form>
         </div>
 
-
-
-
         <h2>Часто задаваемые вопросы</h2>
-        <dl>
-            <dt>Можно ли добавить автора, если о нём почти нет информации?</dt>
-            <dd>Да, достаточно имени и страны. Остальные поля можно заполнить позже, когда появятся данные.</dd>
 
-            <dt>Что делать, если автор публикуется под псевдонимом?</dt>
-            <dd>Укажите настоящее имя в поле «Имя автора», а псевдоним — в отдельном поле. Так карточка останется единой.</dd>
+        <div class="faq" id="faq">
+            <div class="faq__item">
+                <button type="button" class="faq__question" aria-expanded="false">
+                    Можно ли добавить автора, если о нём почти нет информации?
+                </button>
+                <div class="faq__answer" hidden>
+                    <p>Да, достаточно имени и страны. Остальные поля можно заполнить позже, когда появятся данные.</p>
+                </div>
+            </div>
 
-            <dt>Как отредактировать уже добавленного автора?</dt>
-            <dd>Перейдите в личный кабинет и выберите «Мои добавления» — там доступно редактирование карточек.</dd>
-        </dl>
+            <div class="faq__item">
+                <button type="button" class="faq__question" aria-expanded="false">
+                    Что делать, если автор публикуется под псевдонимом?
+                </button>
+                <div class="faq__answer" hidden>
+                    <p>Укажите настоящее имя в поле «Имя автора», а псевдоним — в отдельном поле. Так карточка останется единой.</p>
+                </div>
+            </div>
+
+            <div class="faq__item">
+                <button type="button" class="faq__question" aria-expanded="false">
+                    Как отредактировать уже добавленного автора?
+                </button>
+                <div class="faq__answer" hidden>
+                    <p>Перейдите в личный кабинет и выберите «Мои добавления» — там доступно редактирование карточек.</p>
+                </div>
+            </div>
+        </div>
 
         <p>
             Надеемся, что наша форма покажется вам удобной. Мы постоянно улучшаем интерфейс,
@@ -162,13 +264,6 @@
             в развитие онлайн-каталога!
         </p>
     </div>
-
-    <script>
-        document.querySelector('form')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Демонстрационная форма: автор не будет сохранён, так как это учебный пример. Спасибо!');
-        });
-    </script>
 </main>
 
 <footer>
@@ -179,5 +274,7 @@
     <p>По вопросам работы формы обращайтесь: <a href="mailto:support@bookcatalog.ru">support@bookcatalog.ru</a></p>
 </footer>
 
+<script src="../js/add_author_validation.js"></script>
+<script src="../js/faq-accordion.js"></script>
 </body>
 </html>

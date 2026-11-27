@@ -1,37 +1,38 @@
-/* ===== Обёртка поля: резервируем место под ошибку ===== */
+/*  Обёртка поля: резервируем место под ошибку  */
 .form-field {
     display: flex;
     flex-direction: column;
-    margin-bottom: 0.25rem; /* отступ между полями, не ломает ваш layout */
+    margin-bottom: 0.25rem; /* отступ между полями */
 }
+
+
 
 /* Подсказка о формате — вне поля ввода */
 .form-field .hint {
-    color: #667384;            /* как ваш placeholder */
+    color: #667384;           
     font-size: 0.85rem;
     line-height: 1.35;
-    min-height: 1.2em;         /* резерв под подсказку */
+    min-height: 1.2em;        
     margin-top: 6px;
 }
 
-/* Сообщение об ошибке — место зарезервировано, макет не «прыгает» */
+/* Сообщение об ошибке */
 .form-field .error-message {
-    color: #dc2626;            /* ваш цвет из .required::after */
+    color: #dc2626;           
     font-size: 0.85rem;
     line-height: 1.35;
-    min-height: 1.2em;         /* резерв под сообщение */
+    min-height: 1.2em;        
     display: block;
     margin-top: 2px;
 }
 
-/* Сброс браузерной обводки — используем свою */
+/* Сброс браузерной обводки  */
 .form-field input,
 .form-field textarea {
-    /* базовые стили (border, padding, radius) уже в style.css */
     box-sizing: border-box;
 }
 
-/* Валидное поле — зелёная рамка в тон вашей палитры */
+/* Валидное поле — зелёная рамка*/
 .form-field.is-valid input,
 .form-field.is-valid textarea {
     border-color: #16a34a;
@@ -47,12 +48,12 @@
     box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12);
 }
 
-/* Кнопка: состояние disabled — использует вашу базу */
+/* Кнопка: состояние НЕДОСТУПНА */
 button[type="submit"]:disabled {
-    background: #94a3b8;              /* серый, но в вашей холодной палитре */
+    background: #94a3b8;            
     cursor: not-allowed;
     box-shadow: none;
-    transform: none;                  /* отключаем hover-подъём */
+    transform: none;        /* отключаем hover-подъём */
     opacity: 0.9;
 }
 
@@ -61,6 +62,8 @@ button[type="submit"]:disabled:hover {
     transform: none;
     box-shadow: none;
 }
+
+
 
 /* Статус формы под кнопкой */
 .form-status {
@@ -73,6 +76,10 @@ button[type="submit"]:disabled:hover {
 .form-status.is-error {
     color: #dc2626;
 }
+
+
+
+
 
 /* Адаптивность: на мобильных кнопка на всю ширину */
 @media (max-width: 640px) {
